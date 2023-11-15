@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <ClientProvider>
     <html lang="en">
-      <body className={poppins.className}>
+    <body className={[poppins.className,'flex flex-col min-h-screen'].join(' ')}>
         <ThemeProvider
         attribute="class"
         defaultTheme="system"

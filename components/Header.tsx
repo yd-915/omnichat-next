@@ -6,6 +6,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/auth'
 import Link from 'next/link'
 import { MessagesSquareIcon } from 'lucide-react'
+import ChatButton from './ChatButton'
 
 async function Header() {
     const session = await getServerSession(authOptions)
@@ -21,12 +22,14 @@ async function Header() {
                 <>
                 <Link href={'/chat'} prefetch={false} />
                 <MessagesSquareIcon className='text-primary' />
+                <ChatButton />
                 </>
             ):(
                 <Link href={'/pricing'} prefetch={true} >
                     Pricing
                 </Link>
             )}
+
             <ModeToggle />
             <UserBtn session={session} />
         </div>

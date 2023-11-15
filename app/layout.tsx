@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import ClientProvider from '@/components/ClientProvider'
 
 const poppins = Poppins({ weight:['200', '400', '600', '700', '800'], subsets: ['latin'] })
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    <ClientProvider>
     <html lang="en">
       <body className={poppins.className}>
         <ThemeProvider
@@ -30,5 +32,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </ClientProvider>
   )
 }

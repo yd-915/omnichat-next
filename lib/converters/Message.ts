@@ -1,3 +1,4 @@
+import { LanguageSupported } from '@/store/store';
 
 import { db } from "@/firebase";
 import {DocumentData,
@@ -6,60 +7,60 @@ import {DocumentData,
       SnapshotOptions,
        collection,
         collectionGroup,
-        doc,
+        limit,
+        orderBy,
         query,
         where
     } from 'firebase/firestore'
 
 
-export interface ChatMembers {
-userId: string
+export interface User {
+id: string
 email: string
-timestamp: Date | null
-isAdmin: boolean
-chatId: string
+name: string
 image: string
+}
+
+export interface Message {
+    id?: string
+    input: string
+    timestamp: Date
+    user: User
+    translated?: {
+        [K in LanguageSupported]?: string
+    }
+
 }
 
 
 
-
-const chatMembersConverter:FirestoreDataConverter<ChatMembers> = {
-    toFirestore: function (member: ChatMembers): DocumentData {
+const messageConverter:FirestoreDataConverter<Message> = {
+    toFirestore: function (message: Message): DocumentData {
         return {
-            userId: member.userId,
-            email: member.email,
-            timestamp: member.timestamp,
-            isAdmin: !!member.isAdmin,
-            chatId: member.chatId,
-            image: member.image
+            input: message.input,
+            timestamp: message.timestamp,
+            user: message.user,
+
         }
     },
 
-    fromFirestore: function (snapshot: QueryDocumentSnapshot, options: SnapshotOptions): ChatMembers {
+    fromFirestore: function (snapshot: QueryDocumentSnapshot, options: SnapshotOptions): Message {
         const data = snapshot.data(options)
        return {
-           userId: snapshot.id,
-           email: data.email,
-           timestamp: data.timestamp,
-           isAdmin: data.isAdmin,
-           chatId: data.chatId,
-           image: data.image
+           id: snapshot.id,
+           input: data.input,
+           timestamp: data.timestamp?.toDate(),
+           translated: data.translated,
+           user: data.user
        }
     }
 }
 
-export const addChatRef = (chatId: string, userId: string) => doc(db, 'chats', chatId, 'members', userId).withConverter(chatMembersConverter)
 
+export const messagesRef = (chatId: string) => collection(db, 'chats', chatId, 'messages').withConverter(messageConverter)
 
-export const ChatMembersRed = (chatId: string) => collection(db, 'chats', chatId, 'members').withConverter(chatMembersConverter)
+export const sortedMessagesRef = (chatId: string) => query(messagesRef(chatId), orderBy('timestamp', 'asc'))
 
-export const ChatMemberAdminRef = (chatId: string) => query(
-    collection(db, 'chats', chatId, 'members'),
-    where('isAdmin', '==', true)
-).withConverter(chatMembersConverter)
+export const limitedMessagesRef = (chatId: string) => query(messagesRef(chatId), limit(25))
 
-export const chatMembersCollectionGroupRef = (userId: string) => query(
-    collectionGroup(db, 'members'),
-    where('userId', '==', userId)
-).withConverter(chatMembersConverter)
+export const limitedSortedMessagesRef = (chatId: string) => query(query(messagesRef(chatId), limit(1)), orderBy('timestamp', 'desc'))

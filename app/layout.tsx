@@ -6,6 +6,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 import ClientProvider from '@/components/ClientProvider'
 import FirebaseAuthProv from '@/components/FirebaseAuthProv'
 import SubscriptionProvider from '@/components/SubscriptionProvider'
+import { Toaster } from '@/components/ui/toaster'
 
 const poppins = Poppins({ weight:['200', '400', '600', '700', '800'], subsets: ['latin'] })
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           >
             <Header />
           {children}
+          <Toaster />
           </ThemeProvider>
         </SubscriptionProvider>
       </FirebaseAuthProv>

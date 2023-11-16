@@ -1,9 +1,17 @@
 'use client'
 
+import { useSession } from "next-auth/react"
+
 function CheckoutBtn() {
+    const { data: session } = useSession()
 
 const createCheckOutSession = async () => {
+    if(!session) return
+
     
+
+
+
 }
 
   return (

@@ -29,7 +29,7 @@ async function RegisterPage() {
             </div>
         </div>
 
-        <PricingCards redirect={false} />
+        <PricingCards redirect={false} selectedCardIndex={1} />
     </div>
   )
 }

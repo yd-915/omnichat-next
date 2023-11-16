@@ -32,19 +32,20 @@ const pricing = [
           'Unlimited chat rooms',
           'Supports up to 10 languages',
           '24-hour support response time',
-          'Early access to new features',
+        //   'Early access to new features',
         ],
     }
 ]
 
-function PricingCards({redirect}: {redirect: boolean}) {
+function PricingCards({redirect,selectedCardIndex}: {redirect: boolean,selectedCardIndex: number }) {
   return (
     <div>
-        <div className="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2">
-            {pricing.map((price) => (
-                <div
+        <div className="mx-auto grid max-w-md gap-8 m-10 sm:flex md:flex-col">
+            {pricing.map((price, index) => (
+               index === selectedCardIndex && (
+               <div
                 key={price.id}
-                className="flex flex-col justify-between rounded-3xl bg-primary shadow-xl ring-1 ring-secondary/10 sm:p-10"
+                className="flex flex-col justify-between rounded-3xl m-4 bg-primary shadow-xl ring-1 ring-secondary/10 p-10 sm:p-10"
                 >
                     <div className="">
                         <h3 id={price.id + price.name}
@@ -70,6 +71,7 @@ function PricingCards({redirect}: {redirect: boolean}) {
                                     <CheckIcon className="h-6 w-5 flex-none text-indigo-600"/>
                                     {feature}
                                 </li>
+                            
                             ))}
                         </ul> 
                     </div>
@@ -84,6 +86,7 @@ function PricingCards({redirect}: {redirect: boolean}) {
                         )
                     )}
                 </div> 
+               )
             ))}
         </div>
     </div>

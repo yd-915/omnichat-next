@@ -32,9 +32,10 @@ function PricingPage() {
             </div>
         </div>
 
-        <div className='flow-root bg-white pb-24 sm:pb-32'>
-            <div className='-mt-80'>
-                <PricingCards redirect={true} />
+        <div className='flow-root  pb-24 sm:pb-32 '>
+            <div className='-mt-80 sm:gap-4 sm:flex sm:justify-center'>
+          <PricingCards redirect={true} selectedCardIndex={0} />
+          <PricingCards redirect={true} selectedCardIndex={1} />
             </div>
         </div>
     </div>

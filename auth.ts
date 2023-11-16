@@ -18,8 +18,6 @@ export const authOptions:NextAuthOptions = {
           if(session?.user){
               if(token.sub){
                   session.user.id = token.sub
-
-
                   const firebaseToken= await adminAuth.createCustomToken(token.sub)
                   session.firebaseToken = firebaseToken
                 }  
@@ -36,7 +34,5 @@ export const authOptions:NextAuthOptions = {
         },
     },
     adapter: FirestoreAdapter(adminDb),
-
-
 
 } satisfies NextAuthOptions

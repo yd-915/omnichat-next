@@ -7,7 +7,7 @@ import CheckoutBtn from "./CheckoutBtn"
 const pricing = [
     {
         name: 'Free',
-        id: null ,
+        id: 'free' ,
         href: '#',
         priceMonthly: null,
         description: 'Get started with chatting with OmniChat.',
@@ -22,7 +22,7 @@ const pricing = [
     },
     {
         name: 'Standard',
-        id: 'si_OnlcsLNQYbMzV',
+        id: 'pro',
         href: '#',
         priceMonthly: '$9.99',
         description: 'Unlock the full potential of OmniChat.',

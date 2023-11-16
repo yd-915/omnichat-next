@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import ClientProvider from '@/components/ClientProvider'
+import FirebaseAuthProv from '@/components/FirebaseAuthProv'
 
 const poppins = Poppins({ weight:['200', '400', '600', '700', '800'], subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({
     <ClientProvider>
     <html lang="en">
     <body className={[poppins.className,'flex flex-col min-h-screen'].join(' ')}>
+      <FirebaseAuthProv>
         <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -30,6 +32,7 @@ export default function RootLayout({
         <Header />
         {children}
         </ThemeProvider>
+      </FirebaseAuthProv>
       </body>
     </html>
     </ClientProvider>

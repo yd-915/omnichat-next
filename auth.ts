@@ -1,5 +1,7 @@
+import { FirestoreAdapter } from "@auth/firebase-adapter";
 import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { adminAuth, adminDb } from "./firebase-admin";
 
 export const authOptions:NextAuthOptions = {
     providers:[
@@ -10,5 +12,31 @@ export const authOptions:NextAuthOptions = {
     ],
     session: {
         strategy: "jwt"
-    }
+    },
+    callbacks: {
+        session: async ({ session, token }) => {
+          if(session?.user){
+              if(token.sub){
+                  session.user.id = token.sub
+
+
+                  const firebaseToken= await adminAuth.createCustomToken(token.sub)
+                  session.firebaseToken = firebaseToken
+                }  
+         }
+
+          return session
+        },
+        jwt: async ({ token, user }) => {
+            if(user){
+                token.sub = user.id
+            }
+
+            return token
+        },
+    },
+    adapter: FirestoreAdapter(adminDb),
+
+
+
 } satisfies NextAuthOptions

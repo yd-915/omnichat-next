@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth"
 
 async function RegisterPage() {
     const session = await getServerSession(authOptions)
+    
   return (
     <div className="isolate h-full overflow-hidden bg-secondary pb-40">
         <div className="mx-auto max-w-7xl px-6 pb-12 pt-16 text-primary text-center lg:px-8">

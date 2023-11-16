@@ -38,6 +38,7 @@ const pricing = [
 ]
 
 function PricingCards({redirect,selectedCardIndex}: {redirect: boolean,selectedCardIndex: number }) {
+    
   return (
     <div>
         <div className="mx-auto grid max-w-md gap-8 m-10 sm:flex md:flex-col">

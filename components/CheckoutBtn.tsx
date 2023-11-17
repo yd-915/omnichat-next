@@ -50,7 +50,12 @@ const createCheckOutSession = async () => {
 
   return (
     <div className='flex flex-col space-y-2'>
-{/* If sub show user subed */}
+        {isSubed && (
+            <>
+            <hr className="mt-5"/>
+            <p className="pt-5 text-center text-xs text-indigo-600">You are subscribed to Omni Pro</p>
+            </>
+        )}
     <div 
     onClick={() => createCheckOutSession()}
     className='

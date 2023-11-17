@@ -1,6 +1,7 @@
-import React from 'react'
+'use client'
 
-function DeleteChatBtn() {
+
+function DeleteChatBtn({chatId}:{chatId:string}) {
   return (
     <div>DeleteChatBtn</div>
   )

@@ -19,6 +19,7 @@ import { useSubscriptionStore } from "@/store/store"
 import { ToastAction } from "./ui/toast"
 import { useRouter } from "next/navigation"
 import useAdminId from "@/hooks/useAdminId"
+import ShareLink from "./ShareLink"
 
 const formSchema = z.object({
     email: z.string().email({message: "Invalid email"}),
@@ -119,18 +120,21 @@ function InviteUserBtn({chatId}:{chatId:string}) {
     <>
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button>
+                <Button >
                     <PlusCircleIcon className="mr-1" />
-                    Add user to chat with
+                    Add User
                 </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
                     <DialogTitle>Add user to chat</DialogTitle>
                     <DialogDescription>
-                        Simply enter the email of the user you want to invite to the chat! {" "}
+                        Simply enter the email of the user you want to invite to the chat !
+                    </DialogDescription>
+                    <DialogDescription>
+                       
                         <span className="text-indigo-400 font-bold">
-                            (Note: They must be registered in the application)
+                            (Note: They must be registered with OmniChat)
                         </span>
                     </DialogDescription>
                 </DialogHeader>
@@ -163,11 +167,11 @@ function InviteUserBtn({chatId}:{chatId:string}) {
             </DialogContent>
         </Dialog>
 
-        {/* <ShareLink
+        <ShareLink
         isOpen={openInviteLink}
         setIsOpen={setOpenInviteLink}
         chatId={chatId}
-        /> */}
+        /> 
     </>
     )
   )

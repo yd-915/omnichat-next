@@ -1,3 +1,5 @@
+import ChatButton from "@/components/ChatButton"
+import ChatList from "@/components/ChatList"
 
 type Props = {
     params: {}
@@ -10,7 +12,8 @@ type Props = {
 function ChatsPage({searchParams: {error}}:Props) {
   return (
     <div>
-
+      
+      <ChatList />
     </div>
   )
 }

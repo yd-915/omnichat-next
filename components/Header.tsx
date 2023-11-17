@@ -8,6 +8,8 @@ import Link from 'next/link'
 import { MessagesSquareIcon } from 'lucide-react'
 import ChatButton from './ChatButton'
 import Upgrade from './Upgrade'
+import { Langar } from 'next/font/google'
+import LanguageSwitcher from './LanguageSwitcher'
 
 async function Header() {
     const session = await getServerSession(authOptions)
@@ -18,7 +20,9 @@ async function Header() {
         <Logo />
 
         <div className='flex-1 flex items-center justify-end space-x-4'>
-            {/* lang select */}
+            
+            <LanguageSwitcher />
+
             {session ? (
                 <>
                 <Link href={'/chat'} prefetch={false} />

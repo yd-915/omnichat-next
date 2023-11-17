@@ -52,7 +52,7 @@ const chatMembersConverter:FirestoreDataConverter<ChatMembers> = {
 export const addChatRef = (chatId: string, userId: string) => doc(db, 'chats', chatId, 'members', userId).withConverter(chatMembersConverter)
 
 
-export const ChatMembersRed = (chatId: string) => collection(db, 'chats', chatId, 'members').withConverter(chatMembersConverter)
+export const ChatMembersRef = (chatId: string) => collection(db, 'chats', chatId, 'members').withConverter(chatMembersConverter)
 
 export const ChatMemberAdminRef = (chatId: string) => query(
     collection(db, 'chats', chatId, 'members'),

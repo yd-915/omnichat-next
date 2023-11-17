@@ -9,8 +9,9 @@ import { useSubscriptionStore } from "@/store/store"
 import { useToast } from "./ui/use-toast"
 import Loading from "./Loading"
 import {v4 as uuidv4} from 'uuid'
-import { serverTimestamp, setDoc } from "firebase/firestore"
-import { addChatRef } from "@/lib/converters/Members"
+import { getDocs, serverTimestamp, setDoc } from "firebase/firestore"
+import { addChatRef, chatMembersCollectionGroupRef } from "@/lib/converters/Members"
+import { ToastAction } from "./ui/toast"
 
 
 
@@ -31,8 +32,33 @@ function ChatButton({isLarge}: {isLarge?: boolean}) {
         description: 'Please wait while, chat is being created..',
         duration: 2000,
       })
+      // restrictions for free members
+      const numOfChats = (await getDocs(chatMembersCollectionGroupRef(session?.user.id))).docs.map(
+        (doc) => doc.data()
+      ).length
 
-      // TODO If User is pro
+
+
+      const isPro = subscription?.role === 'pro' && subscription.status === 'active'
+
+        if(!isPro && numOfChats >= 3){
+          toast({
+            title: 'Free plan reached',
+            description: 'Please upgrade your plan to create more chats',
+            variant: 'destructive',
+            duration: 7000,
+            action: (
+              <ToastAction
+              altText="Upgrade"
+              onClick={() => router.push('/register')}
+              >
+              Upgrade</ToastAction>
+            )
+          })
+          setLoading(false)
+          return
+        }
+
 
       const chatId = uuidv4()
       await setDoc(addChatRef(chatId, session?.user.id), {
@@ -75,8 +101,8 @@ function ChatButton({isLarge}: {isLarge?: boolean}) {
       )
 
   return (
-    <Button variant="ghost" onClick={newChat}>
-        <MessageSquarePlusIcon  />
+    <Button variant={'link'} size={'icon'} onClick={newChat}>
+        <MessageSquarePlusIcon className="ml-2" />
     </Button>
   )
 }

@@ -8,7 +8,6 @@ import Link from 'next/link'
 import { MessagesSquareIcon } from 'lucide-react'
 import ChatButton from './ChatButton'
 import Upgrade from './Upgrade'
-import { Langar } from 'next/font/google'
 import LanguageSwitcher from './LanguageSwitcher'
 
 async function Header() {
@@ -16,21 +15,23 @@ async function Header() {
    
   return (
     <header className='sticky top-0 z-50 bg-secondary'>
-     <nav className='flex flex-col sm:flex-row pl-2 bg-secondary max-w-7xl mx-auto items-center p-6'>
+    <nav className='flex flex-col sm:flex-row pl-2 bg-secondary max-w-7xl mx-auto items-center p-6'>
         <Logo />
 
-        <div className='flex-1 flex items-center justify-end space-x-4'>
-            
+        <div className='flex-1 flex items-center justify-end space-x-1'>
             <LanguageSwitcher />
 
             {session ? (
                 <>
-                <Link href={'/chat'} prefetch={false} />
-                <MessagesSquareIcon className='text-primary' />
-                <ChatButton />
+                    <Link href={'/chat'} prefetch={false}>
+                        <div className='flex ml-3 items-center '>
+                            <MessagesSquareIcon className='text-primary' />
+                            <ChatButton />
+                        </div>
+                    </Link>
                 </>
-            ):(
-                <Link href={'/pricing'} prefetch={true} >
+            ) : (
+                <Link href={'/pricing'} prefetch={true}>
                     Pricing
                 </Link>
             )}
@@ -38,11 +39,10 @@ async function Header() {
             <ModeToggle />
             <UserBtn session={session} />
         </div>
-     </nav>
+    </nav>
 
-     {/* upgrade */}
-     <Upgrade />
-    </header>
+    <Upgrade />
+</header>
   )
 }
 

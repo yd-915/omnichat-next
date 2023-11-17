@@ -7,7 +7,7 @@ function Logo() {
   return (
     <Link href={'/'} prefetch={false} className='overflow-hidden'>
         <div className='flex items-center justify-center w-72 h-14'>
-               <h2 className='text-3xl  '>OmniChat </h2>
+               <h2 className='text-3xl font-extrabold tracking-medium  '>OmniChat </h2>
            
         </div>
     </Link>

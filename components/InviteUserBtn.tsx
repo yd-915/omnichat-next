@@ -64,7 +64,7 @@ function InviteUserBtn({chatId}:{chatId:string}) {
                     altText="Upgrade"
                     onClick={() => router.push('/register')}
                     >
-                    Upgrade</ToastAction>
+                    Upgrade to OmniPro</ToastAction>
                 )
             })
             return

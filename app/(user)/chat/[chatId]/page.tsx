@@ -3,10 +3,11 @@ import AdminControls from '@/components/AdminControls'
 import ChatInput from '@/components/ChatInput'
 import ChatMembersBadge from '@/components/ChatMembersBadge'
 import ChatMessages from '@/components/ChatMessages'
+import { ChatMembersRef } from '@/lib/converters/Members'
 import { sortedMessagesRef } from '@/lib/converters/Message'
 import { getDocs } from 'firebase/firestore'
 import { getServerSession } from 'next-auth'
-import { init } from 'next/dist/compiled/webpack/webpack'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
 type Props = {
@@ -20,6 +21,10 @@ async function ChatPage({ params: { chatId }}:Props) {
 
   const initialMessages = (await getDocs(sortedMessagesRef(chatId))).docs.map((doc)=> doc.data())
 
+  const hasAccess = (await getDocs(ChatMembersRef(chatId))).docs.map((doc) => doc.id).includes(session?.user.id!)
+  
+  if(!hasAccess) redirect('/chat?error=permission')
+  
   return (
     <>
   <AdminControls chatId={chatId} />
@@ -35,7 +40,6 @@ async function ChatPage({ params: { chatId }}:Props) {
 
 
   <ChatInput chatId={chatId}/>
-       
     </>
   )
 }

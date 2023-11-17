@@ -21,7 +21,7 @@ const pricing = [
 
     },
     {
-        name: 'Standard',
+        name: 'OmniPro',
         id: 'pro',
         href: '#',
         priceMonthly: '$9.99',

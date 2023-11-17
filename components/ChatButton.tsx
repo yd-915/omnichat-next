@@ -52,7 +52,7 @@ function ChatButton({isLarge}: {isLarge?: boolean}) {
               altText="Upgrade"
               onClick={() => router.push('/register')}
               >
-              Upgrade</ToastAction>
+              Upgrade to OmniPro</ToastAction>
             )
           })
           setLoading(false)

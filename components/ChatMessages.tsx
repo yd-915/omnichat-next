@@ -36,7 +36,7 @@ function ChatMessages({
 
 
   return (
-    <div className="p-5">
+    <div className="p-5 ">
         {!loading && messages?.length === 0 && (
             <div className="flex flex-col items-center justify-center p-10 m-5 rounded-xl space-y-2 bg-indigo-400 text-white font-extralight">
         <MessageCircleIcon className="w-10 h-10" />
@@ -45,7 +45,7 @@ function ChatMessages({
         </h2>
         <h2>
         <span className="font-bold">
-        Start a conversation in <span className="underline underline-offset-2 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-400 relative inline-block mx-2 "><span className="relative text-white m-2">any</span></span> language
+        Start a conversation in <span className="underline underline-offset-2 before:block before:absolute before:-inset-1 before:-skew-y-3 before:bg-[#ff70d6] relative inline-block mx-2 "><span className="relative text-white m-2">any</span></span> language
         </span>  </h2>
         <p>OmniChat will translate your messages in real time</p>
         </div>
@@ -84,3 +84,4 @@ function ChatMessages({
 }
 
 export default ChatMessages
+

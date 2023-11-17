@@ -9,7 +9,7 @@ function ChatError() {
       <AlertCircle className="h-4 w-4" />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription className="flex-1">
-        <p className="flex-1">You don't have permission to access this page
+        <p className="flex-1">You don&apos;t have permission to access this page
         <br />
         <span className="font-bold">
         Please ask the chat Administrator to add you in the chat.

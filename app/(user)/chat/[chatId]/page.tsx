@@ -27,20 +27,19 @@ async function ChatPage({ params: { chatId }}:Props) {
   
   return (
     <>
-  <AdminControls chatId={chatId} />
-
-  <ChatMembersBadge chatId={chatId} />
-
-  <div className='flex-1'>
-    <ChatMessages chatId={chatId}
-    session={session}
-    initialMessages={initialMessages}
-    />
-  </div>
-
-
-  <ChatInput chatId={chatId}/>
-    </>
+  
+    <AdminControls chatId={chatId} />
+  
+    <ChatMembersBadge chatId={chatId} />
+  
+    <div className='flex-1'>
+      <ChatMessages chatId={chatId} session={session} initialMessages={initialMessages} />
+    </div>
+     
+  
+    <ChatInput chatId={chatId} />
+    
+  </>
   )
 }
 

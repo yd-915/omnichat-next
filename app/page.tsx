@@ -26,13 +26,13 @@ export default async function Home() {
             Connect Globally, Communicate Locally.
             </h1>
             <p className='mt-6 text-lg leading-8 text-primary'>
-              A simple native language chat app.
+              Chat with <span className="before:block before:absolute before:-inset-0 before:-skew-y-3 before:bg-[#ff70d6] relative inline-block mx-1 "><span className="relative text-white m-1">anyone in any</span></span>  language.
             </p>
             <p className='text-indigo-400 text-xl font-bold'>
               Let OmniChat do the translation for you.
             </p>
             <div className='mt-10 flex items-center justify-center gap-x-6'>
-              <Link href={'/chat'} prefetch={false} className=" rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ">
+              <Link href={'/chat'} prefetch={false} className=" rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ">
                 Get Started
               </Link>
               <Link href={'/pricing'} prefetch={true} className="text-sm font-semibold leading-6 text-primary">

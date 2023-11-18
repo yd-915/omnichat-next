@@ -15,7 +15,7 @@ const pricing = [
           '20 messages chat limit',
           '2 users limit in a room',
           '3 chat rooms',
-          'Supports 2 languages',
+          'Supports 3 languages',
           '48-hour support response time',
         ],
 
@@ -30,7 +30,7 @@ const pricing = [
           'Unlimited messages in chats',
           'Unlimited users in a chats',
           'Unlimited chat rooms',
-          'Supports up to 10 languages',
+          'Supports more than 10 languages',
           '24-hour support response time',
         //   'Early access to new features',
         ],

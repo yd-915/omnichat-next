@@ -18,10 +18,8 @@ type Props = {
 
 async function ChatPage({ params: { chatId }}:Props) {
   const session = await getServerSession(authOptions)
-
-  const initialMessages = (await getDocs(sortedMessagesRef(chatId))).docs.map((doc)=> doc.data())
-
-  const hasAccess = (await getDocs(ChatMembersRef(chatId))).docs.map((doc) => doc.id).includes(session?.user.id!)
+    const initialMessages = (await getDocs(sortedMessagesRef(chatId))).docs.map((doc)=>doc.data())
+    const hasAccess = (await getDocs(ChatMembersRef(chatId))).docs.map((doc)=>doc.id).includes(session?.user.id!)
   
   if(!hasAccess) redirect('/chat?error=permission')
   

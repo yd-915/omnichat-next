@@ -15,7 +15,7 @@ import { signIn, signOut } from "next-auth/react"
 import { useSubscriptionStore } from "@/store/store"
 import Loading from "./Loading"
 import { StarIcon } from "lucide-react"
-import ManageAccountBtn from "./ManageAccountBtn"
+// import ManageAccountBtn from "./ManageAccountBtn"
   
 function UserBtn({session}:{session:Session | null}) {
   const subscription = useSubscriptionStore((state) => state.subscription)
@@ -46,9 +46,9 @@ function UserBtn({session}:{session:Session | null}) {
         <p>Pro Member</p>
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>
+      {/* <DropdownMenuItem>
         <ManageAccountBtn />
-      </DropdownMenuItem>
+      </DropdownMenuItem> */}
       </>
     )}
    

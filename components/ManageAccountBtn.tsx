@@ -1,13 +1,10 @@
-import { generatePortalLink } from "@/actions/generatePortalLink"
+// import  generatePortalLink  from "@/actions/generatePortalLink"
 
+// function ManageAccountBtn() {
+//   console.log(generatePortalLink)
+//   return (
+//     <button onClick={generatePortalLink}>Manage Subscription</button>
+//   )
+// }
 
-
-function ManageAccountBtn() {
-  return (
-    <form action={generatePortalLink}>
-        <button type="submit">Manage Subscription</button>
-    </form>
-  )
-}
-
-export default ManageAccountBtn
+// export default ManageAccountBtn

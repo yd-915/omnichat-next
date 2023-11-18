@@ -31,7 +31,7 @@ const router = useRouter()
 const subscription = useSubscriptionStore((state) => state.subscription)
 const {toast} = useToast()
 
-const onSubmit = async (values: z.infer<typeof formSchema>) => {
+async function onSubmit(values: z.infer<typeof formSchema>) {
     const inputCopy= values.input.trim()
     form.reset()
     if(inputCopy.length === 0){

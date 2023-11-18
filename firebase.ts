@@ -1,7 +1,7 @@
-import {getApp, getApps, initializeApp} from "firebase/app";
-import {getAuth} from "firebase/auth";
-import {getFirestore} from "firebase/firestore";
-import {getFunctions} from "firebase/functions";
+import { getApp,getApps,initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getFunctions } from "firebase/functions";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -13,9 +13,9 @@ const firebaseConfig = {
     appId: "1:424712602946:web:43a4c0952c9e94a611f4db"
   };
 
-  const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const functions = getFunctions(app);
+  const app = getApps().length ? getApp() : initializeApp(firebaseConfig)
+  const auth = getAuth(app)
+  const db = getFirestore(app)
+  const functions  = getFunctions(app)
 
-  export {auth,db,functions}
+  export {db,auth,functions}

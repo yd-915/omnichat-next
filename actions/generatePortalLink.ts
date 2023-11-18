@@ -11,7 +11,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!,{
     apiVersion: '2023-10-16'
 })
 
-export async function generatePortalLink() {
+export default async function generatePortalLink() {
     const session = await getServerSession(authOptions)
     const host = headers().get('host')
 
@@ -32,6 +32,6 @@ export async function generatePortalLink() {
         return_url: returnUrl
     })
 
-    redirect(stripeSession.url)
+  redirect(stripeSession.url)
 
 }

@@ -14,7 +14,7 @@ export const authOptions:NextAuthOptions = {
         strategy: "jwt"
     },
     callbacks: {
-        session: async ({ session, token }) => {
+        session:async ({ session, token }) => {
           if(session?.user){
               if(token.sub){
                   session.user.id = token.sub
@@ -25,7 +25,7 @@ export const authOptions:NextAuthOptions = {
 
           return session
         },
-        jwt: async ({ token, user }) => {
+        jwt:async ({ token, user }) => {
             if(user){
                 token.sub = user.id
             }

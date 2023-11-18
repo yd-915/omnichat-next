@@ -9,6 +9,7 @@ import { MessagesSquareIcon } from 'lucide-react'
 import ChatButton from './ChatButton'
 import Upgrade from './Upgrade'
 import LanguageSwitcher from './LanguageSwitcher'
+import { Button } from './ui/button'
 
 async function Header() {
     const session = await getServerSession(authOptions)
@@ -32,7 +33,9 @@ async function Header() {
                 </>
             ) : (
                 <Link href={'/pricing'} prefetch={true}>
-                    Pricing
+                    <Button variant='outline' >
+                        Pricing
+                    </Button>
                 </Link>
             )}
 

@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import Link from 'next/link'
 
+
 export default async function Home() {
 
   return (
@@ -40,14 +41,15 @@ export default async function Home() {
               </Link>
             </div>
           </div>
-            <div className='mt-16 flow-root sm:mt-24'>
-              <div className='-m-2 rounded-xl bg-secondary p-2 ring-1 ring-inset ring-secondary lg:-m-4 lg:rounded-2xl lg:p-4 '>
+            <div className='mt-16 flex justify-center items-center  flex-1 sm:mt-24'>
+              <div className='m-0 p-0 rounded-xl bg-secondary  items-center flex justify-center ring-1 ring-inset ring-secondary lg:m-4 lg:rounded-2xl lg:p-4 '>
                 <Image
-                unoptimized
-                src="/chat.png"
+                // unoptimized
+                src="/chat.gif"
                 alt="chat"
-                width={2432}
-                height={1442}
+                width={920}
+                height={144}
+                objectFit='contain'
                 className="rounded-md shadow-2xl ring-1 ring-secondary "/>
               </div>
             </div>

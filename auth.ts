@@ -34,6 +34,6 @@ export const authOptions:NextAuthOptions = {
             return token
         },
     },
-    adapter: FirestoreAdapter(firestore) as Adapter,
+    adapter: FirestoreAdapter(adminDb) as Adapter,
 
 } satisfies NextAuthOptions

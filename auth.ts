@@ -2,6 +2,7 @@ import { FirestoreAdapter } from "@auth/firebase-adapter";
 import { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { adminAuth, adminDb } from "./firebase-admin";
+import type { Adapter } from "next-auth/adapters";
 
 export const authOptions:NextAuthOptions = {
     providers:[
@@ -33,6 +34,6 @@ export const authOptions:NextAuthOptions = {
             return token
         },
     },
-    adapter: FirestoreAdapter(adminDb),
+    adapter: FirestoreAdapter(firestore) as Adapter,
 
 } satisfies NextAuthOptions
